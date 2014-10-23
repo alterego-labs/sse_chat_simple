@@ -14,10 +14,12 @@
       <input type="text" name="message" id="message" value="" />
       <input type='submit' value="GO!" />
     </form>
+    <div id='chat'>
+    </div>
     <script>
       // reading
-      //var es = new EventSource('/stream');
-      //es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
+      var es = new EventSource('/stream');
+      es.onmessage = function(e) { $('#chat').append(e.data + "<br>") };
 
       // writing
       $("form").on('submit',function(e) {
