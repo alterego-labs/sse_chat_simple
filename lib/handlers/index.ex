@@ -7,8 +7,9 @@ defmodule Handlers.Index do
   end
 
   def handle(req, state) do
-    IO.puts "status handler"
-    {ok, req} = :cowboy_req.reply(200, [{"content-type", "text/html"}], "Answer", req)
+    IO.puts "Index handling..."
+    {:ok, data} = File.read "assets/index.html"
+    {ok, req} = :cowboy_req.reply(200, [{"content-type", "text/html"}], data, req)
     {ok, req, state}
   end
 

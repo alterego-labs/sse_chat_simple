@@ -6,6 +6,7 @@ defmodule SseChatSimpleSup do
   end
 
   def init(:ok) do
+    :pg2.create(:pongers)
     {:ok, {{:one_for_one, 10, 10}, []}}
   end
 end
