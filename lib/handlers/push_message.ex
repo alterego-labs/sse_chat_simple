@@ -6,7 +6,9 @@ defmodule Handlers.PushMessage do
   end
 
   def handle(req, state) do
-    for pid <- :pg2.get_members(:ponders), do: notify_clients(pid)
+    #for pid <- :pg2.get_members(:ponders), do: notify_clients(pid)
+    {name, _req} = :cowboy_req.qs_val(<<"name">>, req)
+    IO.puts name
     :cowboy_req.reply 200, [], <<"ack">>, req
     {:ok, req, state}
   end

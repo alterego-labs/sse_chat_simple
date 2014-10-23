@@ -2,7 +2,7 @@ defmodule Handlers.Index do
   @behaviour :cowboy_http_handler
 
   def init(_, req, _) do
-    IO.puts "status handler init"
+    IO.puts "Init Index handler..."
     {:ok, req, :no_state}
   end
 

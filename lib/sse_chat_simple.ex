@@ -3,7 +3,10 @@ defmodule SseChatSimple do
 
   def start(_type \\ "", _args \\ []) do
     dispatch = :cowboy_router.compile([
-      {:_, [{:_, Handlers.Index, []}]},
+      {:_, [
+          {"/", Handlers.Index, []},
+          {"/push_message", Handlers.PushMessage, []}
+        ]},
       ])
     :cowboy.start_http :sse_chat_simple_listener, 100,
       [port: 8080],
