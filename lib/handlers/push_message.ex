@@ -6,7 +6,8 @@ defmodule Handlers.PushMessage do
   end
 
   def handle(req, state) do
-    message = make_message(req)
+    {qs_vals, _req} = :cowboy_req.qs_vals(req)
+    message = MessageBuilder.build qs_vals
     IO.puts "Sending message: " <> message
     clients = ClientsRepository.members
     Enum.each clients, &notify_clients(&1, message)
@@ -24,19 +25,5 @@ defmodule Handlers.PushMessage do
 
   def terminate(_reason, _req, _state) do
     :ok
-  end
-
-  defp make_message(req) do
-    login_msg(req) <> ": " <> message_msg(req)
-  end
-
-  defp login_msg(req) do
-    {login, _req} = :cowboy_req.qs_val(<<"login">>, req)
-    login
-  end
-
-  defp message_msg(req) do
-    {message, _req} = :cowboy_req.qs_val(<<"message">>, req)
-    message
   end
 end
