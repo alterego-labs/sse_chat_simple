@@ -30,7 +30,9 @@ defmodule SseChatSimple.Mixfile do
   defp deps do
     [
       { :cowboy, github: "extend/cowboy", tag: "1.0.0" },
-      { :lasse, github: "inaka/lasse", ref: "ddd135dc4526b162b58c43fb3e25f4c35de264a3" }
+      { :lasse, github: "inaka/lasse", ref: "ddd135dc4526b162b58c43fb3e25f4c35de264a3" },
+      { :timex, "~> 0.13.0" },
+      { :jsex, "2.0.0" }
     ]
   end
 end

@@ -1,4 +1,7 @@
 %{"cowboy": {:git, "git://github.com/extend/cowboy.git", "021f4f6069e5fae326bdfb0acb12c6500082fa44", [tag: "1.0.0"]},
   "cowlib": {:git, "git://github.com/extend/cowlib.git", "d544a494af4dbc810fc9c15eaf5cc050cced1501", [ref: "1.0.0"]},
+  "jsex": {:package, "2.0.0"},
+  "jsx": {:package, "2.1.1"},
   "lasse": {:git, "git://github.com/inaka/lasse.git", "ddd135dc4526b162b58c43fb3e25f4c35de264a3", [ref: "ddd135dc4526b162b58c43fb3e25f4c35de264a3"]},
-  "ranch": {:git, "git://github.com/extend/ranch.git", "adf1822defc2b7cfdc7aca112adabfa1d614043c", [ref: "1.0.0"]}}
+  "ranch": {:git, "git://github.com/extend/ranch.git", "adf1822defc2b7cfdc7aca112adabfa1d614043c", [ref: "1.0.0"]},
+  "timex": {:package, "0.13.0"}}
