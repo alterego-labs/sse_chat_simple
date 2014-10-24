@@ -2,7 +2,7 @@ defmodule Handlers.Stream do
   @behaviour :lasse_handler
 
   def init(_init_args, _last_event_id, req) do
-    :pg2.join :pongers, self()
+    ClientsRepository.add self()
     {:ok, req, {}}
   end
 

@@ -8,7 +8,7 @@ defmodule Handlers.PushMessage do
   def handle(req, state) do
     message = make_message(req)
     IO.puts "Sending message: " <> message
-    clients = :pg2.get_members(:pongers)
+    clients = ClientsRepository.members
     Enum.each clients, &notify_clients(&1, message)
     :cowboy_req.reply 200, [], <<"ack">>, req
     {:ok, req, state}
