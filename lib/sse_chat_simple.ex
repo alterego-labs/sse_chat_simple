@@ -4,7 +4,7 @@ defmodule SseChatSimple do
   def start(_type \\ "", _args \\ []) do
     dispatch = :cowboy_router.compile([
       {:_, [
-          {"/", Handlers.Index, []},
+          {"/", :cowboy_static, {:file, "views/index.html"}},
           {"/push_message", Handlers.PushMessage, []},
           {"/stream", :lasse_handler, [Handlers.Stream]}
         ]},
