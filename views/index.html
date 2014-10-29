@@ -2,7 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
+    <script src='/assets/js/application.js'></script>
     <title>Simple SSE-Chat</title>
   </head>
   <body>
@@ -16,25 +16,5 @@
     </form>
     <div id='chat'>
     </div>
-    <script>
-      // reading
-      var es = new EventSource('/stream');
-      es.onmessage = function(e) {
-        var data = JSON.parse(e.data);
-        str = "<span><b>" + data.username + "</b></span><span style='font-size: 14px;'><i>(" + data.datetime + ")</i></span>:<span style='margin-left: 5px;'>" + data.message + "</span>";
-        $('#chat').append(str + "<br>")
-      };
-
-      // writing
-      $("form").on('submit',function(e) {
-        $.get('/push_message', {
-          login: $('#login').val(),
-          message: $('#message').val()
-        });
-        $('#message').val('');
-        $('#message').focus();
-        e.preventDefault();
-      });
-    </script>
   </body>
 </html>

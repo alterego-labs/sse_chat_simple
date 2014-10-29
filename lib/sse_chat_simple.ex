@@ -6,7 +6,8 @@ defmodule SseChatSimple do
       {:_, [
           {"/", :cowboy_static, {:file, "views/index.html"}},
           {"/push_message", Handlers.PushMessage, []},
-          {"/stream", :lasse_handler, [Handlers.Stream]}
+          {"/stream", :lasse_handler, [Handlers.Stream]},
+          {"/assets/[...]", :cowboy_static, {:dir, "priv/assets"}}
         ]},
       ])
     :cowboy.start_http :sse_chat_simple_listener, 100,
